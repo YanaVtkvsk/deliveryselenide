@@ -4,7 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class AppCardDeliveryTest {
 
@@ -29,7 +31,12 @@ public class AppCardDeliveryTest {
         options.addArguments("disable-infobars");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-gpu");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(15, SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(15, SECONDS);
     }
+
+
 
     @Test
     void shouldBeSuccessful() {
