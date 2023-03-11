@@ -21,7 +21,10 @@ public class AppCardDeliveryTest {
 
     private String generateDate(int addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
+
     }
+
+    private WebDriver driver;
 
     @BeforeAll
     public static void setUp() {
