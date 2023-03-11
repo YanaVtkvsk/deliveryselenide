@@ -1,5 +1,7 @@
 package ru.netology.web;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -19,6 +21,11 @@ public class AppCardDeliveryTest {
 
     private String generateDate(int addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
+    }
+
+    @BeforeAll
+    public static void setUp() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
