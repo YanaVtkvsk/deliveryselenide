@@ -1,8 +1,10 @@
 package ru.netology.web;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -21,11 +23,17 @@ public class AppCardDeliveryTest {
 
     }
 
+    @BeforeEach
+    public void beforeEach() {
+        ChromeOptions options = new ChromeOptions();
+        Configuration.headless = true;
+        open("http://localhost:9999");
+    }
+
+
 
     @Test
     void shouldBeSuccessful() {
-        Configuration.headless = true;
-        open("http://localhost:9999");
         $("[data-test-id= 'city'] input").setValue("Санкт-Петербург");
         String currentDate = generateDate(3, "dd.MM.yyyy");
         $("[data-test-id= 'date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
