@@ -29,6 +29,7 @@ public class AppCardDeliveryTest {
         options.addArguments("disable-infobars");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-gpu");
+    }
 
     @Test
     void shouldBeSuccessful() {
